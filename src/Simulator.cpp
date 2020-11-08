@@ -99,10 +99,10 @@ bool Simulator::schedulability_test() {
 
     if (utility > schedulable_utility) {
         cout << "U = " << utility << " > " << schedulable_utility
-             << ", 可能不可排" << endl;
+             << ", may not schedulable" << endl;
         return false;
     } else {
-        cout << "U = " << utility << " < " << schedulable_utility << ", 可排"
+        cout << "U = " << utility << " < " << schedulable_utility << ", schedulable"
              << endl;
         return true;
     }

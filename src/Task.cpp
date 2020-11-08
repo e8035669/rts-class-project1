@@ -1,5 +1,6 @@
 #include "Task.h"
 
+#include <algorithm>
 #include <string>
 
 Task::Task() {
@@ -16,8 +17,8 @@ Task::Task(int task_id, int phase, int period, int relative_deadline,
 }
 
 double Task::utilization() const {
-    if (period) {
-        return (double)execution_time / period;
+    if (std::min(period, relative_deadline) != 0) {
+        return (double)execution_time / std::min(period, relative_deadline);
     }
     return 0;
 }
