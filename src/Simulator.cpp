@@ -77,7 +77,7 @@ void Simulator::job_miss_scan() {
 // 檢查是否有新工作抵達
 void Simulator::job_release_scan() {
     for (Task& t : _tasks) {
-        if (((_clock - t.phase) % t.period) == 0) {
+        if ((_clock >= t.phase) && ((_clock - t.phase) % t.period) == 0) {
             Job new_job{.parent_task = t};
             new_job.absolute_deadline = _clock + t.relative_deadline;
             new_job.release_time = _clock;
